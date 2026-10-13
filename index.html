@@ -165,62 +165,117 @@ h2{font:400 clamp(44px,4.75vw,73px)/1.19 var(--serif);letter-spacing:-1.65px;mar
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HealthAndBeautyBusiness","name":"Thamires Martins","description":"Massoterapia, liberação miofascial, drenagem linfática, estética corporal e depilação em Rio das Ostras, RJ.","url":"https://thamiresmartins.store/","telephone":"+55-22-99275-2182","address":{"@type":"PostalAddress","streetAddress":"Rua Tijuca, 438, Centro","addressLocality":"Rio das Ostras","addressRegion":"RJ","postalCode":"28890-000","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"13:00"}],"sameAs":["https://www.instagram.com/thamiresmartins_massoterapeuta/"],"hasMap":"https://www.google.com/maps/search/?api=1&query=Rua+Tijuca+438+Centro+Rio+das+Ostras+RJ"}</script>
 <style id="tm-layout-fix">
+/* Thamires Martins — correções de legibilidade e layout responsivo (2026-10-13) */
+html { scroll-padding-top: 105px; }
+body { overflow-x: clip; }
+:where(.container,.welcome-copy,.profile-copy,.local-copy,.sense-copy,.section-heading,.drawer-text,.service-row,.hero-content,.hero-actions,.ritual-title) { min-width: 0; }
+:where(h1,h2,h3,p,.button,.underlink,.service-row,.drawer-text,.business-hours,.nav-cta,.identity-text) { overflow-wrap: break-word; }
+:where(h1,h2,h3) { max-width: 100%; }
+:where(section[id],div[id].section-pad) { scroll-margin-top: 105px; }
+:where(.button,.nav-cta,.underlink,.hero-link) { max-width: 100%; white-space: normal; }
+:where(.button,.nav-cta) { height: auto; min-height: 44px; line-height: 1.45; }
+:where(.button svg,.nav-cta svg) { flex-shrink: 0; }
+:where(.welcome-grid,.profile-grid,.sense-grid,.local-grid,.faq-grid) > * { min-width: 0; }
+.section-heading h2,.welcome h2,.profile h2,.local h2,.ritual h2,.faq h2,.closing h2 { line-height: 1.22; }
+.service-row { min-height: 80px; }
+.service-row h3 { line-height: 1.3; }
+.path-card { min-width: 0; }
+.path-card .path-middle { line-height: 1.24; overflow-wrap: break-word; }
+.ritual-steps { align-items: start; }
+.ritual-steps > div { min-width: 0; }
+.ritual-steps h3 { line-height: 1.25; }
+.business-hours dl>div { align-items: baseline; }
+.business-hours dt,.business-hours dd { min-width: 0; overflow-wrap: break-word; }
+.service-dialog .drawer-text { min-width: 0; overflow-wrap: break-word; }
+.service-dialog .drawer-photo img { object-fit: cover; }
+.service-dialog .button { white-space: normal; }
+/* Hero cresce de acordo com o conteúdo: nada pode desaparecer sob o rodapé sobreposto */
+.hero { height: auto !important; min-height: max(800px, 100svh) !important; max-height: none !important; }
+.hero-content { padding-bottom: 175px !important; }
+.hero-bottom { bottom: 26px; width: min(1320px,calc(100% - 108px)); }
+@media (max-width:1190px) {
+  .hero-bottom { width:calc(100% - 72px); }
+  .site-header { gap: 15px; }
+  .nav-links { gap: clamp(9px,1.6vw,24px); }
+  .identity { min-width: 0; }
+}
+@media (max-width:900px) {
+  .hero { min-height: max(790px, 100svh) !important; }
+  .hero-content { padding-top: 180px !important; padding-bottom: 185px !important; }
+  .hero-bottom { width:calc(100% - 54px); }
+  .site-header { padding-left: 26px; padding-right: 26px; }
+  .menu-mobile { max-height: calc(100svh - 76px); overflow-y: auto; }
+}
+@media (max-width:680px) {
+  html { scroll-padding-top: 85px; }
+  section[id] { scroll-margin-top: 85px; }
+  .hero { min-height: max(810px, 100svh) !important; }
+  .hero-content { padding-top: 167px !important; padding-bottom: 180px !important; }
+  .hero h1 { font-size: clamp(44px, 10.6vw, 66px); line-height: 1.14; }
+  .hero-content > p { max-width: 100%; line-height: 1.85; }
+  .hero-actions { align-items: flex-start; }
+  .hero-actions .button { max-width: 100%; }
+  .hero-bottom { width: calc(100% - 38px); bottom: 23px; flex-wrap: wrap; row-gap: 12px; }
+  .hero-topline { letter-spacing: 1.6px; }
+  .section-pad { padding-block: 70px; }
+  .section-heading { margin-bottom: 34px; }
+  .section-heading h2 { line-height: 1.23; }
+  .path-card { min-height: 320px; }
+  .profile-copy,.welcome-copy,.local-copy { padding-inline: 0; }
+  .ritual-steps { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .business-hours dl > div { gap: 10px; }
+  .service-dialog .drawer-text { padding: 28px 24px 90px; }
+  .service-dialog h2 { font-size: clamp(31px,8vw,40px); line-height: 1.23; }
+  footer { padding-bottom: 60px; }
+}
+@media (max-width:390px) {
+  .site-header { gap: 10px; padding-left: 16px; padding-right: 16px; }
+  .identity { gap: 6px; }
+  .identity-symbol { flex: 0 0 29px; width: 29px; }
+  .identity-text strong { font-size: clamp(16px,5vw,21px); }
+  .identity-text small { font-size: 6px; letter-spacing: 1.2px; }
+  .menu-toggle { margin-left: auto; flex: 0 0 36px; }
+  .hero { min-height: max(850px, 100svh) !important; }
+  .hero-content { padding-top: 158px !important; padding-bottom: 192px !important; }
+  .hero h1 { font-size: clamp(41px,11vw,51px); }
+  .hero-actions { gap: 15px; }
+  .hero-bottom { align-items: flex-start; flex-direction: column; }
+  .business-hours dl > div { flex-wrap: wrap; }
+  .ritual-steps { grid-template-columns: 1fr; }
+  .ritual-steps > div { border-top: 1px solid #c9cfc1; padding: 18px 0 0; }
+  .service-dialog .drawer-text { padding: 25px 18px 90px; }
+  .service-dialog .drawer-photo { height: 215px; }
+}
+@media (max-height:650px) and (min-width:681px) {
+  .hero { min-height: 790px !important; }
+}
 
-/* Thamires: ajuste de sobreposições, tipografia e responsividade */
-html{scroll-padding-top:105px}body{overflow-x:clip}
-:where(.container,.welcome-copy,.profile-copy,.local-copy,.sense-copy,.section-heading,.drawer-text,.service-row,.hero-content,.hero-actions,.ritual-title){min-width:0}
-:where(h1,h2,h3,p,.button,.underlink,.service-row,.drawer-text,.business-hours,.nav-cta,.identity-text){overflow-wrap:break-word}
-:where(h1,h2,h3){max-width:100%}
-:where(section[id],div[id].section-pad){scroll-margin-top:105px}
-:where(.button,.nav-cta,.underlink,.hero-link){max-width:100%;white-space:normal}
-:where(.button,.nav-cta){height:auto;min-height:44px;line-height:1.45}
-:where(.button svg,.nav-cta svg){flex-shrink:0}
-:where(.welcome-grid,.profile-grid,.sense-grid,.local-grid,.faq-grid)>*{min-width:0}
-.section-heading h2,.welcome h2,.profile h2,.local h2,.ritual h2,.faq h2,.closing h2{line-height:1.22}
-.service-row{min-height:80px}.service-row h3{line-height:1.3}
-.path-card{min-width:0}.path-card .path-middle{line-height:1.24;overflow-wrap:break-word}
-.ritual-steps{align-items:start}.ritual-steps>div{min-width:0}.ritual-steps h3{line-height:1.25}
-.business-hours dl>div{align-items:baseline}.business-hours dt,.business-hours dd{min-width:0;overflow-wrap:break-word}
-.service-dialog .drawer-text{min-width:0;overflow-wrap:break-word}
-.service-dialog .drawer-photo img{object-fit:cover}
-.service-dialog .button{white-space:normal}
-.hero{height:auto!important;min-height:max(800px,100svh)!important;max-height:none!important}
-.hero-content{padding-bottom:175px!important}
-.hero-bottom{bottom:26px;width:min(1320px,calc(100% - 108px))}
-@media(max-width:1190px){.hero-bottom{width:calc(100% - 72px)}.site-header{gap:15px}.nav-links{gap:clamp(9px,1.6vw,24px)}.identity{min-width:0}}
-@media(max-width:900px){.hero{min-height:max(790px,100svh)!important}.hero-content{padding-top:180px!important;padding-bottom:185px!important}.hero-bottom{width:calc(100% - 54px)}.site-header{padding-left:26px;padding-right:26px}.menu-mobile{max-height:calc(100svh - 76px);overflow-y:auto}}
+</style>
+<style id="tm-photo-text-fix">
+
+/* Legenda livre: imagens nunca tapam frases de galeria. */
+.welcome-gallery{height:auto!important;min-height:0!important;position:relative;display:block!important;overflow:visible!important}
+.welcome-big{position:relative!important;inset:auto!important;display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;margin:0!important;overflow:visible!important;border-radius:0!important}
+.welcome-big img{display:block!important;width:100%!important;height:clamp(330px,34vw,500px)!important;object-fit:cover!important;border-radius:4px 145px 4px 4px!important}
+.welcome-big figcaption{position:static!important;inset:auto!important;left:auto!important;bottom:auto!important;display:block!important;width:100%!important;max-width:100%!important;min-height:0!important;white-space:normal!important;overflow-wrap:break-word!important;background:transparent!important;color:#445743!important;font:italic clamp(19px,2.1vw,26px)/1.5 Georgia,serif!important;padding:14px 0 0!important;margin:0!important;box-shadow:none!important}
+.welcome-small,.gallery-stamp{display:none!important}
+.arrival-photo{height:auto!important;min-height:0!important;width:100%!important;max-width:100%!important;display:flex!important;flex-direction:column!important;align-self:auto!important;margin:0!important;overflow:visible!important}
+.arrival-photo img{position:static!important;display:block!important;width:100%!important;height:clamp(285px,31vw,460px)!important;object-fit:cover!important}
+.arrival-photo figcaption{position:static!important;inset:auto!important;left:auto!important;bottom:auto!important;max-width:100%!important;width:100%!important;padding:15px 0 0!important;margin:0!important;box-shadow:none!important;background:transparent!important;overflow-wrap:break-word!important;color:#425944!important;font:italic clamp(20px,2.2vw,26px)/1.45 Georgia,serif!important}
+.welcome-grid,.arrival-grid,.profile-grid,.philosophy-grid,.local-grid,.faq-grid,.sense-grid{min-width:0!important;align-items:center}
+.welcome-grid>*,.arrival-grid>*,.profile-grid>*,.philosophy-grid>*,.local-grid>*,.faq-grid>*,.sense-grid>*{min-width:0!important;max-width:100%}
+.welcome-copy,.arrival-copy,.profile-copy,.philosophy-copy{min-width:0;max-width:100%}
+.welcome-copy h2,.arrival-copy h2,.profile-copy h2,.philosophy-copy h2{line-height:1.25!important;overflow-wrap:normal;word-break:normal}
+@media(max-width:900px){.welcome-big img{height:390px!important}.arrival-photo img{height:350px!important}}
 @media(max-width:680px){
-html{scroll-padding-top:85px}section[id]{scroll-margin-top:85px}
-.hero{min-height:max(810px,100svh)!important}
-.hero-content{padding-top:167px!important;padding-bottom:180px!important}
-.hero h1{font-size:clamp(44px,10.6vw,66px);line-height:1.14}
-.hero-content>p{max-width:100%;line-height:1.85}
-.hero-actions{align-items:flex-start}.hero-actions .button{max-width:100%}
-.hero-bottom{width:calc(100% - 38px);bottom:23px;flex-wrap:wrap;row-gap:12px}
-.hero-topline{letter-spacing:1.6px}
-.section-pad{padding-block:70px}.section-heading{margin-bottom:34px}.section-heading h2{line-height:1.23}
-.path-card{min-height:320px}
-.profile-copy,.welcome-copy,.local-copy{padding-inline:0}
-.ritual-steps{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.business-hours dl>div{gap:10px}
-.service-dialog .drawer-text{padding:28px 24px 90px}
-.service-dialog h2{font-size:clamp(31px,8vw,40px);line-height:1.23}
-footer{padding-bottom:60px}}
-@media(max-width:390px){
-.site-header{gap:10px;padding-left:16px;padding-right:16px}
-.identity{gap:6px}.identity-symbol{flex:0 0 29px;width:29px}
-.identity-text strong{font-size:clamp(16px,5vw,21px)}
-.identity-text small{font-size:6px;letter-spacing:1.2px}
-.menu-toggle{margin-left:auto;flex:0 0 36px}
-.hero{min-height:max(850px,100svh)!important}
-.hero-content{padding-top:158px!important;padding-bottom:192px!important}
-.hero h1{font-size:clamp(41px,11vw,51px)}
-.hero-actions{gap:15px}
-.hero-bottom{align-items:flex-start;flex-direction:column}
-.business-hours dl>div{flex-wrap:wrap}
-.ritual-steps{grid-template-columns:1fr}.ritual-steps>div{border-top:1px solid #c9cfc1;padding:18px 0 0}
-.service-dialog .drawer-text{padding:25px 18px 90px}.service-dialog .drawer-photo{height:215px}}
-@media(max-height:650px) and (min-width:681px){.hero{min-height:790px!important}}
+ .welcome-grid,.arrival-grid,.profile-grid,.philosophy-grid{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:26px!important}
+ .welcome-gallery,.arrival-photo{width:100%!important;margin:0!important}
+ .welcome-big img{height:clamp(270px,80vw,380px)!important;border-radius:3px 90px 3px 3px!important}
+ .welcome-big figcaption{font-size:21px!important;margin-top:2px!important;padding:14px 0 0!important}
+ .arrival-photo img{height:clamp(240px,74vw,340px)!important}
+ .arrival-photo figcaption{font-size:21px!important;padding-top:13px!important}
+}
+@media(max-width:390px){.welcome-big img{height:280px!important}.welcome-big figcaption,.arrival-photo figcaption{font-size:20px!important}}
 
 </style>
 </head>
@@ -501,49 +556,51 @@ footer{padding-bottom:60px}}
 })();
 </script>
 <script id="tm-whatsapp-tracking">
-
-/* Rastreio WhatsApp Thamires: origem + serviço + botão + UTMs */
+/* Rastreamento WhatsApp Thamires — preserva UTM do acesso e identifica serviço e CTA */
 (() => {
- 'use strict';
- const number='5522992752182';
- const params=new URLSearchParams(window.location.search);
- const clean=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\w-]+/g,'_').replace(/^_+|_+$/g,'').toUpperCase().slice(0,46)||'GERAL';
- const cleanVal=v=>String(v||'').replace(/[\r\n\[\]]/g,' ').trim().slice(0,100);
- const getSaved=k=>{try{return sessionStorage.getItem('tm_'+k)||''}catch(e){return ''}};
- const save=(k,v)=>{try{if(v)sessionStorage.setItem('tm_'+k,v)}catch(e){}};
- const record={};
- ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{const v=cleanVal(params.get(k)||getSaved(k));if(v){record[k]=v;save(k,v)}});
- const domain=(()=>{try{return new URL(document.referrer).hostname.toLowerCase()}catch(e){return ''}})();
- const origin=cleanVal(record.utm_source||(params.has('gclid')?'google':params.has('fbclid')?'facebook':/(^|\.)google\./.test(domain)?'google':/(^|\.)instagram\./.test(domain)?'instagram':/(^|\.)facebook\./.test(domain)?'facebook':/(^|\.)bing\./.test(domain)?'bing':'site'));
- const from={google:'GG01',instagram:'IG01',facebook:'FB01',bing:'BG01',site:'ST01'};
- const channel=from[origin.toLowerCase()]||'OR01';
- const medium=record.utm_medium||(origin==='google'||origin==='bing'?'organic':origin==='instagram'||origin==='facebook'?'social':'website');
- const campaign=record.utm_campaign||'site_institucional';
- function context(a){
-  if(a.id==='dialog-wa')return {button:'DETALHE_SERVICO',service:document.querySelector('#dialog-title')?.textContent?.trim()||'geral'};
-  if(a.classList.contains('floating-whatsapp'))return {button:'WHATSAPP_FLUTUANTE',service:'geral'};
-  if(a.classList.contains('nav-cta'))return {button:'MENU_AGENDAR',service:'geral'};
-  const container=a.closest('section,footer,header');
-  const sec=container?.id||container?.classList?.[0]||'geral';
-  const label=(a.textContent||a.getAttribute('aria-label')||'contato').replace(/\s+/g,' ').trim();
-  const bySection={hero:'HERO',treatments:'TRATAMENTOS',welcome:'ACOLHIMENTO',paths:'OBJETIVOS',profile:'SOBRE',faq:'FAQ',closing:'CHAMADA_FINAL',local:'LOCALIZACAO',ritual:'EXPERIENCIA'};
-  return {button:(bySection[sec]||clean(sec))+'_'+clean(label).slice(0,28),service:'geral'};
- }
- function makeLink(a){
-  if(!a?.getAttribute('href')?.includes('wa.me/'))return;
-  const url=new URL(a.href,window.location.href);if(!url.pathname.includes(number))return;
-  const data=context(a);
-  const code='TM-'+channel+'-'+clean(data.service).slice(0,24)+'-'+clean(data.button).slice(0,32);
-  const initial=(url.searchParams.get('text')||'Olá, Thamires! Gostaria de saber mais sobre os atendimentos.').split(/\n\s*\[TM-/)[0].trim();
-  const meta=new URLSearchParams({utm_source:origin,utm_medium:medium,utm_campaign:campaign,utm_content:clean(data.button).toLowerCase(),...(record.utm_term?{utm_term:record.utm_term}:{})});
-  const msg=initial+'\n\n[TM-'+channel+' | SERVICO:'+clean(data.service)+' | BOTAO:'+clean(data.button)+']'+'\nUTM: '+meta.toString();
-  url.search=new URLSearchParams({text:msg}).toString();
-  a.href=url.toString();a.dataset.trackingCode=code;
- }
- document.querySelectorAll('a[href*="wa.me/"]').forEach(makeLink);
- for(const type of ['click','focusin','pointerover']){
-  document.addEventListener(type,e=>{const a=e.target.closest?.('a[href*="wa.me/"]');if(a)makeLink(a)},true);
- }
+  'use strict';
+  const number='5522992752182';
+  const params=new URLSearchParams(window.location.search);
+  const clean=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\w-]+/g,'_').replace(/^_+|_+$/g,'').toUpperCase().slice(0,46)||'GERAL';
+  const cleanVal=v=>String(v||'').replace(/[\r\n\[\]]/g,' ').trim().slice(0,100);
+  const getSaved=k=>{try{return sessionStorage.getItem('tm_'+k)||''}catch(e){return ''}};
+  const save=(k,v)=>{try{if(v)sessionStorage.setItem('tm_'+k,v)}catch(e){}};
+  const allowed=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  const record={};
+  allowed.forEach(k=>{const v=cleanVal(params.get(k)||getSaved(k));if(v){record[k]=v;save(k,v)}});
+  const domain=(()=>{try{return new URL(document.referrer).hostname.toLowerCase()}catch(e){return ''}})();
+  const origin=cleanVal(record.utm_source || (params.has('gclid')?'google':params.has('fbclid')?'facebook':/(^|\.)google\./.test(domain)?'google':/(^|\.)instagram\./.test(domain)?'instagram':/(^|\.)facebook\./.test(domain)?'facebook':/(^|\.)bing\./.test(domain)?'bing':'site'));
+  const from={google:'GG01',instagram:'IG01',facebook:'FB01',bing:'BG01',site:'ST01'};
+  const channel=from[origin.toLowerCase()]||'OR01';
+  const medium=record.utm_medium||(origin==='google'||origin==='bing'?'organic':origin==='instagram'||origin==='facebook'?'social':'website');
+  const campaign=record.utm_campaign||'site_institucional';
+  function context(a){
+    if(a.id==='dialog-wa')return {button:'DETALHE_SERVICO',service:document.querySelector('#dialog-title')?.textContent?.trim()||'geral'};
+    if(a.classList.contains('floating-whatsapp'))return {button:'WHATSAPP_FLUTUANTE',service:'geral'};
+    if(a.classList.contains('nav-cta'))return {button:'MENU_AGENDAR',service:'geral'};
+    const container=a.closest('section,footer,header');
+    const sec=container?.id||container?.classList?.[0]||'geral';
+    const label=(a.textContent||a.getAttribute('aria-label')||'contato').replace(/\s+/g,' ').trim();
+    const bySection={hero:'HERO',treatments:'TRATAMENTOS',welcome:'ACOLHIMENTO',paths:'OBJETIVOS',profile:'SOBRE',faq:'FAQ',closing:'CHAMADA_FINAL',local:'LOCALIZACAO',ritual:'EXPERIENCIA'};
+    return {button:(bySection[sec]||clean(sec))+'_'+clean(label).slice(0,28),service:'geral'};
+  }
+  function makeLink(a){
+    if(!a?.getAttribute('href')?.includes('wa.me/'))return;
+    const url=new URL(a.href,window.location.href);
+    if(!url.pathname.includes(number))return;
+    const contextData=context(a);
+    const code='TM-'+channel+'-'+clean(contextData.service).slice(0,24)+'-'+clean(contextData.button).slice(0,32);
+    const initial=(url.searchParams.get('text')||'Olá, Thamires! Gostaria de saber mais sobre os atendimentos.').split(/\n\s*\[TM-/)[0].trim();
+    const meta=new URLSearchParams({utm_source:origin,utm_medium:medium,utm_campaign:campaign,utm_content:clean(contextData.button).toLowerCase(),...(record.utm_term?{utm_term:record.utm_term}:{})});
+    const msg=initial+'\n\n[TM-'+channel+' | SERVICO:'+clean(contextData.service)+' | BOTAO:'+clean(contextData.button)+']'+'\nUTM: '+meta.toString();
+    url.search=new URLSearchParams({text:msg}).toString();
+    a.href=url.toString();
+    a.dataset.trackingCode=code;
+  }
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(makeLink);
+  for(const type of ['click','focusin','pointerover']){
+    document.addEventListener(type,e=>{const a=e.target.closest?.('a[href*="wa.me/"]');if(a)makeLink(a)},true);
+  }
 })();
 
 </script>
